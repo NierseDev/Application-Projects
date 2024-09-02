@@ -1,0 +1,10 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #a2b9bc; }
+
+.flex-container > div {
+  background-color: #b2ad7f;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px; }
