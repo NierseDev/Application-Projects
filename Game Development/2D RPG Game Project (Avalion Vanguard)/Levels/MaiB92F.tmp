@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2aihjc3nphln"]
+
+[ext_resource type="Texture2D" uid="uid://b7gqxyvbj6jk0" path="res://Assets/TileMaps/Test/Tilemap_Flat.png" id="1_5ibpp"]
+[ext_resource type="PackedScene" uid="uid://cq1jaaj8paask" path="res://Player.tscn" id="1_big53"]
+
+[sub_resource type="GDScript" id="GDScript_4ymkk"]
+resource_name = "PlayableAreaScript"
+script/source = "extends Area2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2fsiy"]
+texture = ExtResource("1_5ibpp")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+4:0/size_in_atlas = Vector2i(4, 4)
+4:0/0 = 0
+8:0/size_in_atlas = Vector2i(4, 4)
+8:0/0 = 0
+0:4/size_in_atlas = Vector2i(4, 4)
+0:4/0 = 0
+4:4/size_in_atlas = Vector2i(4, 4)
+4:4/0 = 0
+8:4/size_in_atlas = Vector2i(4, 4)
+8:4/0 = 0
+0:8/size_in_atlas = Vector2i(4, 4)
+0:8/0 = 0
+4:8/size_in_atlas = Vector2i(4, 4)
+4:8/0 = 0
+8:8/size_in_atlas = Vector2i(4, 4)
+8:8/0 = 0
+0:12/size_in_atlas = Vector2i(4, 4)
+0:12/0 = 0
+4:12/size_in_atlas = Vector2i(4, 4)
+4:12/0 = 0
+8:12/size_in_atlas = Vector2i(4, 4)
+8:12/0 = 0
+12:12/size_in_atlas = Vector2i(4, 4)
+12:12/0 = 0
+12:0/size_in_atlas = Vector2i(4, 4)
+12:0/0 = 0
+12:4/size_in_atlas = Vector2i(4, 4)
+12:4/0 = 0
+12:8/size_in_atlas = Vector2i(4, 4)
+12:8/0 = 0
+20:0/size_in_atlas = Vector2i(4, 4)
+20:0/0 = 0
+24:0/size_in_atlas = Vector2i(4, 4)
+24:0/0 = 0
+28:0/size_in_atlas = Vector2i(4, 4)
+28:0/0 = 0
+32:0/size_in_atlas = Vector2i(4, 4)
+32:0/0 = 0
+20:4/size_in_atlas = Vector2i(4, 4)
+20:4/0 = 0
+24:4/size_in_atlas = Vector2i(4, 4)
+24:4/0 = 0
+28:4/size_in_atlas = Vector2i(4, 4)
+28:4/0 = 0
+32:4/size_in_atlas = Vector2i(4, 4)
+32:4/0 = 0
+20:8/size_in_atlas = Vector2i(4, 4)
+20:8/0 = 0
+24:8/size_in_atlas = Vector2i(4, 4)
+24:8/0 = 0
+28:8/size_in_atlas = Vector2i(4, 4)
+28:8/0 = 0
+32:8/size_in_atlas = Vector2i(4, 4)
+32:8/0 = 0
+20:12/size_in_atlas = Vector2i(4, 4)
+20:12/0 = 0
+24:12/size_in_atlas = Vector2i(4, 4)
+24:12/0 = 0
+28:12/size_in_atlas = Vector2i(4, 4)
+28:12/0 = 0
+32:12/size_in_atlas = Vector2i(4, 4)
+32:12/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_w0qof"]
+sources/2 = SubResource("TileSetAtlasSource_2fsiy")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fc0h"]
+size = Vector2(382, 381)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjned"]
+size = Vector2(22, 382.5)
+
+[node name="MainWorld" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = SubResource("GDScript_4ymkk")
+
+[node name="TileMap" type="TileMap" parent="Area2D"]
+tile_set = SubResource("TileSet_w0qof")
+format = 2
+layer_0/tile_data = PackedInt32Array(196611, 2, 0, 196615, 262146, 0, 196619, 262146, 0, 196623, 262146, 0, 196627, 262146, 0, 196631, 524290, 0, 458755, 2, 4, 720899, 2, 4, 983043, 2, 4, 1245187, 2, 4, 1507331, 2, 8, 1507339, 262146, 8, 1507335, 262146, 8, 1507343, 262146, 8, 1507347, 262146, 8, 1507351, 524290, 8, 1245207, 524290, 4, 983063, 524290, 4, 720919, 524290, 4, 458775, 524290, 4, 1245203, 262146, 4, 1245199, 262146, 4, 1245195, 262146, 4, 1245191, 262146, 4, 983047, 262146, 4, 720903, 262146, 4, 458759, 262146, 4, 458763, 262146, 4, 458767, 262146, 4, 458771, 262146, 4, 720915, 262146, 4, 983059, 262146, 4, 983055, 262146, 4, 983051, 262146, 4, 720907, 262146, 4, 720911, 262146, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(216, 217.5)
+shape = SubResource("RectangleShape2D_7fc0h")
+
+[node name="Player" parent="." instance=ExtResource("1_big53")]
+position = Vector2(212, 196)
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(20, 218.25)
+shape = SubResource("RectangleShape2D_kjned")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(410, 219)
+shape = SubResource("RectangleShape2D_kjned")
+
+[node name="Boundary2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary2"]
+position = Vector2(216, 411)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_kjned")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary2"]
+position = Vector2(216, 22)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_kjned")

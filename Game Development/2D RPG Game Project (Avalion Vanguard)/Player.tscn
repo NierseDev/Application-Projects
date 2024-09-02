@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=3 uid="uid://cq1jaaj8paask"]
+
+[ext_resource type="Texture2D" uid="uid://b7cev3ftdwvu3" path="res://Assets/Sprites/Player/Pawn_Blue.png" id="1_3ttvb"]
+
+[sub_resource type="GDScript" id="GDScript_owcxt"]
+resource_name = "PlayerMovement"
+script/source = "extends CharacterBody2D
+
+@export var SPEED = 250.0
+func get_input():
+	var input_direction = Input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\")
+	velocity = input_direction * SPEED
+
+func _physics_process(_delta):
+	get_input()
+	move_and_slide()
+
+@onready var _animated_sprite = $AnimatedSprite2D
+func walkingAnim_check():
+	if velocity.x || velocity.y != 0:
+		_animated_sprite.play(\"Walk\")
+	else:
+		_animated_sprite.play(\"Idle\")
+
+func directionAnim_check():
+	if Input.is_action_pressed(\"move_left\"):
+		_animated_sprite.flip_h = true
+	elif Input.is_action_pressed(\"move_right\"):
+		_animated_sprite.flip_h = false
+
+func _process(_delta):
+	walkingAnim_check()
+	directionAnim_check()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egys7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmktb"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdkt0"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvsge"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an2gn"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baidy"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrsq6"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlx1b"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcbm0"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tab17"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqeip"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gctnx"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mqel"]
+atlas = ExtResource("1_3ttvb")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fiym5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmktb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdkt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvsge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an2gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baidy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrsq6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlx1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcbm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tab17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqeip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gctnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mqel")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[node name="Player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = SubResource("GDScript_owcxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_egys7")
+debug_color = Color(0, 0.6, 0.701961, 0.705882)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_fiym5")
+animation = &"Walk"
+frame = 2
+frame_progress = 0.492158

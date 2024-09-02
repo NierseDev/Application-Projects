@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://desmplg5te1pt"]
+
+[ext_resource type="Script" path="res://Scripts/prc_wrld_gen.gd" id="1_fr357"]
+
+[node name="PrcWrldGen" type="Node2D"]
+script = ExtResource("1_fr357")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2

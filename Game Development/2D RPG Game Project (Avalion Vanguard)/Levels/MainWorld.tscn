@@ -1,0 +1,261 @@
+[gd_scene load_steps=16 format=3 uid="uid://d2aihjc3nphln"]
+
+[ext_resource type="Texture2D" uid="uid://b7gqxyvbj6jk0" path="res://Assets/TileMaps/Test/Tilemap_Flat.png" id="1_5ibpp"]
+[ext_resource type="PackedScene" uid="uid://cq1jaaj8paask" path="res://Player.tscn" id="1_big53"]
+[ext_resource type="Texture2D" uid="uid://drx02yxmcgvao" path="res://Assets/TileMaps/Test/Tilemap_Elevation.png" id="1_su2ew"]
+[ext_resource type="Texture2D" uid="uid://bdx5u3tsiqfm0" path="res://Assets/TileMaps/Test/Bridge_All.png" id="2_6eclw"]
+[ext_resource type="Texture2D" uid="uid://b4l05gnl5uj4r" path="res://Assets/TileMaps/Test/Shadows.png" id="4_kbepr"]
+[ext_resource type="Texture2D" uid="uid://cf6s1bqrvbt3h" path="res://Assets/TileMaps/Test/Water.png" id="5_3buhh"]
+[ext_resource type="Script" path="res://Scripts/MainWorld.gd" id="6_ej0s5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_24nck"]
+texture = ExtResource("1_su2ew")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+4:0/size_in_atlas = Vector2i(4, 4)
+4:0/0 = 0
+8:0/size_in_atlas = Vector2i(4, 4)
+8:0/0 = 0
+0:4/size_in_atlas = Vector2i(4, 4)
+0:4/0 = 0
+4:4/size_in_atlas = Vector2i(4, 4)
+4:4/0 = 0
+8:4/size_in_atlas = Vector2i(4, 4)
+8:4/0 = 0
+0:8/size_in_atlas = Vector2i(4, 4)
+0:8/0 = 0
+4:8/size_in_atlas = Vector2i(4, 4)
+4:8/0 = 0
+8:8/size_in_atlas = Vector2i(4, 4)
+8:8/0 = 0
+0:12/size_in_atlas = Vector2i(4, 4)
+0:12/0 = 0
+4:12/size_in_atlas = Vector2i(4, 4)
+4:12/0 = 0
+8:12/size_in_atlas = Vector2i(4, 4)
+8:12/0 = 0
+12:12/size_in_atlas = Vector2i(4, 4)
+12:12/0 = 0
+12:0/size_in_atlas = Vector2i(4, 4)
+12:0/0 = 0
+12:4/size_in_atlas = Vector2i(4, 4)
+12:4/0 = 0
+12:8/size_in_atlas = Vector2i(4, 4)
+12:8/0 = 0
+0:16/size_in_atlas = Vector2i(4, 4)
+0:16/0 = 0
+4:16/size_in_atlas = Vector2i(4, 4)
+4:16/0 = 0
+8:16/size_in_atlas = Vector2i(4, 4)
+8:16/0 = 0
+8:20/size_in_atlas = Vector2i(4, 4)
+8:20/0 = 0
+4:20/size_in_atlas = Vector2i(4, 4)
+4:20/0 = 0
+0:20/size_in_atlas = Vector2i(4, 4)
+0:20/0 = 0
+12:16/size_in_atlas = Vector2i(4, 4)
+12:16/0 = 0
+12:20/size_in_atlas = Vector2i(4, 4)
+12:20/0 = 0
+0:28/size_in_atlas = Vector2i(4, 1)
+0:28/0 = 0
+4:28/size_in_atlas = Vector2i(4, 1)
+4:28/0 = 0
+8:28/size_in_atlas = Vector2i(4, 1)
+8:28/0 = 0
+12:28/size_in_atlas = Vector2i(2, 1)
+12:28/0 = 0
+14:28/size_in_atlas = Vector2i(2, 1)
+14:28/0 = 0
+0:29/0 = 0
+0:30/0 = 0
+1:29/size_in_atlas = Vector2i(3, 2)
+1:29/0 = 0
+8:29/size_in_atlas = Vector2i(3, 2)
+8:29/0 = 0
+11:29/0 = 0
+11:30/0 = 0
+4:29/size_in_atlas = Vector2i(4, 2)
+4:29/0 = 0
+0:31/size_in_atlas = Vector2i(4, 1)
+0:31/0 = 0
+4:31/size_in_atlas = Vector2i(4, 1)
+4:31/0 = 0
+8:31/size_in_atlas = Vector2i(4, 1)
+8:31/0 = 0
+12:29/size_in_atlas = Vector2i(2, 2)
+12:29/0 = 0
+14:29/size_in_atlas = Vector2i(2, 2)
+14:29/0 = 0
+14:31/size_in_atlas = Vector2i(2, 1)
+14:31/0 = 0
+12:31/size_in_atlas = Vector2i(2, 1)
+12:31/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8j4ba"]
+texture = ExtResource("2_6eclw")
+0:5/size_in_atlas = Vector2i(4, 2)
+0:5/0 = 0
+0:7/size_in_atlas = Vector2i(4, 3)
+0:7/0 = 0
+0:10/size_in_atlas = Vector2i(4, 3)
+0:10/0 = 0
+0:13/size_in_atlas = Vector2i(4, 2)
+0:13/0 = 0
+1:0/size_in_atlas = Vector2i(2, 4)
+1:0/0 = 0
+3:0/size_in_atlas = Vector2i(3, 4)
+3:0/0 = 0
+6:0/size_in_atlas = Vector2i(3, 4)
+6:0/0 = 0
+9:0/size_in_atlas = Vector2i(2, 4)
+9:0/0 = 0
+4:5/size_in_atlas = Vector2i(1, 2)
+4:5/0 = 0
+5:4/size_in_atlas = Vector2i(3, 4)
+5:4/0 = 0
+4:8/size_in_atlas = Vector2i(4, 4)
+4:8/0 = 0
+9:4/size_in_atlas = Vector2i(3, 4)
+9:4/0 = 0
+8:12/size_in_atlas = Vector2i(4, 4)
+8:12/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2fsiy"]
+texture = ExtResource("1_5ibpp")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+4:0/size_in_atlas = Vector2i(4, 4)
+4:0/0 = 0
+8:0/size_in_atlas = Vector2i(4, 4)
+8:0/0 = 0
+0:4/size_in_atlas = Vector2i(4, 4)
+0:4/0 = 0
+4:4/size_in_atlas = Vector2i(4, 4)
+4:4/0 = 0
+8:4/size_in_atlas = Vector2i(4, 4)
+8:4/0 = 0
+0:8/size_in_atlas = Vector2i(4, 4)
+0:8/0 = 0
+4:8/size_in_atlas = Vector2i(4, 4)
+4:8/0 = 0
+8:8/size_in_atlas = Vector2i(4, 4)
+8:8/0 = 0
+0:12/size_in_atlas = Vector2i(4, 4)
+0:12/0 = 0
+4:12/size_in_atlas = Vector2i(4, 4)
+4:12/0 = 0
+8:12/size_in_atlas = Vector2i(4, 4)
+8:12/0 = 0
+12:12/size_in_atlas = Vector2i(4, 4)
+12:12/0 = 0
+12:0/size_in_atlas = Vector2i(4, 4)
+12:0/0 = 0
+12:4/size_in_atlas = Vector2i(4, 4)
+12:4/0 = 0
+12:8/size_in_atlas = Vector2i(4, 4)
+12:8/0 = 0
+20:0/size_in_atlas = Vector2i(4, 4)
+20:0/0 = 0
+24:0/size_in_atlas = Vector2i(4, 4)
+24:0/0 = 0
+28:0/size_in_atlas = Vector2i(4, 4)
+28:0/0 = 0
+32:0/size_in_atlas = Vector2i(4, 4)
+32:0/0 = 0
+20:4/size_in_atlas = Vector2i(4, 4)
+20:4/0 = 0
+24:4/size_in_atlas = Vector2i(4, 4)
+24:4/0 = 0
+28:4/size_in_atlas = Vector2i(4, 4)
+28:4/0 = 0
+32:4/size_in_atlas = Vector2i(4, 4)
+32:4/0 = 0
+20:8/size_in_atlas = Vector2i(4, 4)
+20:8/0 = 0
+24:8/size_in_atlas = Vector2i(4, 4)
+24:8/0 = 0
+28:8/size_in_atlas = Vector2i(4, 4)
+28:8/0 = 0
+32:8/size_in_atlas = Vector2i(4, 4)
+32:8/0 = 0
+20:12/size_in_atlas = Vector2i(4, 4)
+20:12/0 = 0
+24:12/size_in_atlas = Vector2i(4, 4)
+24:12/0 = 0
+28:12/size_in_atlas = Vector2i(4, 4)
+28:12/0 = 0
+32:12/size_in_atlas = Vector2i(4, 4)
+32:12/0 = 0
+36:3/size_in_atlas = Vector2i(4, 1)
+36:3/0 = 0
+16:2/size_in_atlas = Vector2i(4, 2)
+16:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lmg6k"]
+texture = ExtResource("4_kbepr")
+3:3/size_in_atlas = Vector2i(6, 6)
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_884br"]
+texture = ExtResource("5_3buhh")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_w0qof"]
+sources/2 = SubResource("TileSetAtlasSource_2fsiy")
+sources/0 = SubResource("TileSetAtlasSource_24nck")
+sources/7 = SubResource("TileSetAtlasSource_lmg6k")
+sources/8 = SubResource("TileSetAtlasSource_884br")
+sources/10 = SubResource("TileSetAtlasSource_8j4ba")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fc0h"]
+size = Vector2(382, 381)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjned"]
+size = Vector2(26, 382.5)
+
+[node name="MainWorld" type="Node2D"]
+position = Vector2(345, 117)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_w0qof")
+format = 2
+layer_0/tile_data = PackedInt32Array(196611, 2, 0, 196615, 262146, 0, 196619, 262146, 0, 196623, 262146, 0, 196627, 262146, 0, 196631, 524290, 0, 458755, 2, 4, 720899, 2, 4, 983043, 2, 4, 1245187, 2, 4, 1507331, 2, 8, 1507339, 262146, 8, 1507335, 262146, 8, 1507343, 262146, 8, 1507347, 262146, 8, 1507351, 524290, 8, 1245207, 524290, 4, 983063, 524290, 4, 720919, 524290, 4, 458775, 524290, 4, 1245203, 262146, 4, 1245199, 262146, 4, 1245195, 262146, 4, 1245191, 262146, 4, 983047, 262146, 4, 720903, 262146, 4, 458759, 262146, 4, 458763, 262146, 4, 458767, 262146, 4, 458771, 262146, 4, 720915, 262146, 4, 983059, 262146, 4, 983055, 262146, 4, 983051, 262146, 4, 720907, 262146, 4, 720911, 262146, 4)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("6_ej0s5")
+
+[node name="Trigger" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(216, 217.5)
+shape = SubResource("RectangleShape2D_7fc0h")
+debug_color = Color(0.701961, 0.490196, 0, 0.698039)
+
+[node name="Player" parent="." instance=ExtResource("1_big53")]
+position = Vector2(212, 196)
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="Wall-1" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(20, 218.25)
+shape = SubResource("RectangleShape2D_kjned")
+debug_color = Color(0.999508, 0, 0.110809, 0.42)
+
+[node name="Wall-2" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(411, 218)
+shape = SubResource("RectangleShape2D_kjned")
+debug_color = Color(0.999508, 0, 0.110809, 0.42)
+
+[node name="Wall-3" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(216, 400)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_kjned")
+debug_color = Color(0.999508, 0, 0.110809, 0.42)
+
+[node name="Wall-4" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(216, -10)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_kjned")
+debug_color = Color(0.999508, 0, 0.110809, 0.42)

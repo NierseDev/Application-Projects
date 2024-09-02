@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=.5">
+
+        <title>Helios Inventory</title>
+        <link rel="icon" href="/image/Transparen_Logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="data/CSS/main.css">
+        <link rel="stylesheet" href="data/JS/modal.js">
+    </head>
+
+    <body>
+        <div class="Header">
+            <img src="/image/Logo-Helios1.png" width="88px" height="88px" alt="Helios One">
+
+            <div class="admin">
+                <div class="loginpage">
+                    <a href="/data/HTML/loginPage.html" value="Login">
+                        <img src="/image/LoginPerson.png" alt="Helios One">
+                    </a>
+                </div>
+            </div>
+
+            <div class="searchbar">
+                <form action="submit" method="get">
+                    <input type="text" placeholder="SEARCH" autocomplete="on">
+                    <button type="submit">
+                        <img src="/image/Search Icon.png" alt="Search" width="20px" height="20px">
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <br><br><br><br><br><br>
+
+        <!-- Modal Section -->
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img src="/image/Flowers/Sunflower.jpg" alt="Sunflower" width="400px">
+                <h3>Sunflower</h3>
+            </div>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img src="/image/Flowers/Tulip.png" alt="Tulip" width="400px">
+                <h3>Tulip</h3>
+            </div>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img src="/image/Flowers/Rose.jpg" alt="Rose" width="400px">
+                <h3>Rose</h3>
+            </div>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img src="/image/Flowers/Chrysanthemum.jpg" alt="Chrysanthemum" width="400px">
+                <h3>Chrysanthemum</h3>
+            </div>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img src="/image/Flowers/Hibiscus Flower.jpg" alt="Hibiscus" width="400px">
+                <h3>Hibiscus</h3>
+            </div>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img src="/image/Flowers/Daffodil.jpg" alt="Daffodil" width="400px">
+                <h3>Sunflower</h3>
+            </div>
+        </div>
+
+        <!-- Containers -->
+
+        <div class="container">
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Sunflower.jpg" alt="Sunflower" width="300px" height="294px">
+                <h3>Sunflower</h3>
+                <h4>(Heliantheae)</h4>
+                <p>Quantity: </p>
+            </div>
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Tulip.png" alt="Garden Tulip" width="300px" height="294px">
+                <h3>Didier's Tulip</h3>
+                <h4>(Tulipa gesneriana)</h4>
+                <p>Quantity: </p>
+            </div>
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Rose.jpg" alt="Rose" width="300px" height="294px">
+                <h3>Rose</h3>
+                <h4>(Rosa 'American Beauty')</h4>
+                <p>Quantity: </p>
+            </div>
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Chrysanthemum.jpg" alt="Indian Chrysanthemum" width="300px" height="294px">
+                <h3>Indian Chrysanthemum</h3>
+                <h4>(Chrysanthemum indicum)</h4>
+                <p>Quantity: </p>
+            </div>
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Hibiscus Flower.jpg" alt="Hibiscus" width="300px" height="294px">
+                <h3>Chinese Hibiscus</h3>
+                <h4>(Hibiscus rosa-sinensis)</h4>
+                <p>Quantity: </p>
+            </div>
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Daffodil.jpg" alt="Primrose-peerless Daffodil" width="300px" height="294px">
+                <h3>Primrose-peerless Daffodil</h3>
+                <h4>(Narcissus × medioluteus)</h4>
+                <p>Quantity: </p>
+            </div>
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Cherry Blossom.jpg" alt="Cherry Blossom" width="300px" height="294px">
+                <h3>Cherry Blossom</h3>
+                <h4>(Prunus cerasus)</h4>
+                <p>Quantity: </p>
+            </div>
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Lilies.jpg" alt="White Lily" width="300px" height="294px">
+                <h3>White Lily</h3>
+                <h4>(Lilium candidum)</h4>
+                <p>Quantity: </p>
+            </div>
+            <div class="box" onclick="popup()">
+                <img src="/image/Flowers/Hydrangea scandens.jpg" alt="Hydrangea" width="300px" height="294px">
+                <h3>Hydrangea</h3>
+                <h4>(Hydrangea scandens)</h4>
+                <p>Quantity: </p>
+            </div>
+        </div>
+
+        <br><br>
+        <hr>
+
+        <footer>
+            <div class="faqs">
+                <h4>About Us!</h2>
+                <p>FAQs</p>
+                <ul>
+                    <li>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum mollitia illum tempora ipsam tempore sequi quo eos, officia dolorem impedit? Culpa tempora rem dolore! Fugit accusamus eveniet corrupti deleniti numquam.
+                        Dignissimos provident architecto, nam unde sunt eos earum, cupiditate corrupti consequatur quia ex ut assumenda quaerat distinctio quasi consectetur veniam velit accusantium nihil numquam illo iste porro sed soluta. Ex.
+                    </li>
+                    <li>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non impedit dolore, fuga magnam nesciunt illum quia doloribus veniam? Hic unde corrupti possimus reprehenderit doloremque ab tenetur inventore. Repellat, maxime aspernatur?
+                        Natus perspiciatis vitae animi hic, eligendi consectetur. Maxime excepturi ullam iste, aliquam nostrum consectetur perferendis, voluptatum dolorum, aspernatur quasi odio! Fugiat architecto consectetur culpa sequi eius perferendis nulla blanditiis earum!
+                        Eveniet placeat voluptas voluptatibus, autem cumque quibusdam? Culpa facere consequatur odio quae officiis obcaecati, nam laudantium laborum, quas commodi, vero unde. Autem ea illo quis accusamus blanditiis laboriosam incidunt vel.
+                    </li>
+                </ul>
+            </div>
+            
+            <br>
+
+            <div class="trade-copymark">
+                &copy;Helios One&trade;         
+            </div>
+        </footer>
+    </body>
+</html>

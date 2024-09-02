@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq1jaaj8paask"]
+
+[ext_resource type="Texture2D" uid="uid://cx02xw5ch5jx2" path="res://icon.svg" id="1_8nldk"]
+
+[sub_resource type="GDScript" id="GDScript_owcxt"]
+resource_name = "PlayerMovement"
+script/source = "extends CharacterBody2D
+
+@export var SPEED = 300.0
+
+func get_input():
+	look_at(get_global_mouse_position())
+	var input_direction = Input.get_axis(\"move_down\", \"move_up\")
+	if input_direction:
+		velocity = transform.x + input_direction * SPEED
+	else:
+		velocity = transform.y + Input.get_axis(\"move_left\", \"move_right\") * SPEED
+
+func _physics_process(delta):
+	get_input()
+	move_and_slide()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egys7"]
+
+[node name="Player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = SubResource("GDScript_owcxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_egys7")
+debug_color = Color(0, 0.6, 0.701961, 0.705882)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D"]
+texture = ExtResource("1_8nldk")
