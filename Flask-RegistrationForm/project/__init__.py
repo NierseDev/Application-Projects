@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, url_for, jsonify
 from flask_assets import Environment, Bundle
 
 app = Flask(__name__)
@@ -18,12 +18,16 @@ css.build()
 def index():
     return render_template("index.html")
 
-@app.route('/registration')
+@app.route('/registration', methods=['GET','POST'])
 def registration():
-    return render_template("registration.html")
+    if request.method == 'GET':
+        return render_template("registration.html")
+    elif request.method == 'POST':
+        firstName = request.form.get('FirstName')
+        middleName = request.form.get('MiddleName')
+        lastName = request.form.get('LastName')
 
-@app.route('/registration/submit', methods=['GET', 'POST'])
+        return "/registration/submit"
+
+@app.route('/registration/submit', methods=['POST'])
 def submit():
-    if request.form == 'GET':
-        return
-    return

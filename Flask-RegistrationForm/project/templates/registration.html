@@ -1,36 +1,80 @@
 {% extends "base.html" %}
-
-{% block title %}Web | Registration{% endblock %}
+{% block title %}Web | Registration{% endblock %} 
 
 {% block body %}
+
 <form>
-    <div class="form-row">
-        <div class="col">
-            <label for="FirstName">First Name</label>
-            <input type="name" class="form-control" id="FirstName" placeholder="Enter your First Name">
-        </div>
-        <div class="col">
-            <label for="MiddleName">Middle Name</label>
-            <input type="name" class="form-control" id="MiddleName" placeholder="Enter your Middle Name">
-        </div>
-        <div class="col">
-            <label for="LastName">Last Name</label>
-            <input type="name" class="form-control" id="LastName" placeholder="Enter your Last Name">
-        </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="FirstName">First Name</label>
+      <input
+        type="name"
+        class="form-control"
+        id="FirstName"
+        placeholder="Enter your First Name"
+      />
     </div>
-    <div class="form-group">
-        <label for="ContactNum">Contact Number</label>
-        <input type="number" class="form-control" id="ContactNum" placeholder="Enter your Contact Number">
+    <div class="col">
+      <label for="MiddleName">Middle Name</label>
+      <input
+        type="name"
+        class="form-control"
+        id="MiddleName"
+        placeholder="Enter your Middle Name"
+      />
     </div>
-    <div class="form-group">
-        <label for="Address">Address</label>
-        <input type="address" class="form-control" id="Address" placeholder="Enter your Address">
+    <div class="col">
+      <label for="LastName">Last Name</label>
+      <input
+        type="name"
+        class="form-control"
+        id="LastName"
+        placeholder="Enter your Last Name"
+      />
     </div>
-    <div class="form-group">
-        <label for="Email">Email Address</label>
-        <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-  </form>
+  </div>
+  <div class="form-group">
+    <label for="ContactNum">Contact Number</label>
+    <input
+      type="tel"
+      class="form-control"
+      id="ContactNum"
+      placeholder="Enter your Contact Number (123-456-7890)"
+      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="Address">Address</label>
+    <input
+      type="address"
+      class="form-control"
+      id="Address"
+      placeholder="Enter your Address"
+    />
+  </div>
+  <div class="form-group">
+    <label for="Email">Email Address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="Email"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+    />
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
+    >
+  </div>
+  <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+</form>
+
+<script type="text/javascript">
+  const submit = document.getElementById("submit");
+  const jsonData = {
+    fName: document.getElementById("FirstName"),
+    mName: document.getElementById("MiddleName"),
+    lName: document.getElementById("LastName"),
+  };
+</script>
+
 {% endblock %}
