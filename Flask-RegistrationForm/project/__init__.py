@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, jsonify
 from flask_assets import Environment, Bundle
+import json
 
 app = Flask(__name__)
 assets = Environment(app)
@@ -18,16 +19,28 @@ css.build()
 def index():
     return render_template("index.html")
 
-@app.route('/registration', methods=['GET','POST'])
+@app.route('/home')
+def home():
+    return render_template("index.html")
+
+@app.route('/registration', methods=['GET', 'POST'])
 def registration():
     if request.method == 'GET':
-        return render_template("registration.html")
+        return render_template('registration.html')
     elif request.method == 'POST':
-        firstName = request.form.get('FirstName')
-        middleName = request.form.get('MiddleName')
-        lastName = request.form.get('LastName')
+        data = request.get_json()
+        fName = data.get('FirstName')
+        mName = data.get('MiddleName')
+        lName = data.get('LastName')
+        contactNum = data.get('ContactNum')
+        email = data.get('Email')
+        address = data.get('Address')
+        
+        # Load and Save to existing data
+        try:
+            with open('project/static/src/json/registrationData.json', 'w') as json_file:
+                json.dump(data, json_file)
+        except FileNotFoundError:
+            raise FileNotFoundError
 
-        return "/registration/submit"
-
-@app.route('/registration/submit', methods=['POST'])
-def submit():
+        return jsonify({"message": "User registered successfully!"})
