@@ -61,10 +61,10 @@ def registration():
             cursor.execute(query, values)
             conn.commit()
 
-            message = "User registered successfully!", 200
+            message = "User registered successfully!"
             color = '#70fa70'
         except(Exception):
-            message = "Error: Failed to Register User!", 500
+            message = "Error: Failed to Register User!"
             color = '#a81b1b'
         finally:
             cursor.close()
