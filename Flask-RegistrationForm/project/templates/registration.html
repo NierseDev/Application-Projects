@@ -3,7 +3,7 @@
 
 {% block body %}
 <div>
-  <form id="registrationForm" action="/registration" method="post">
+  <form id="registrationForm" enctype="multipart/form-data" action="/registration" method="post">
     <div class="form-row">
       <div class="col">
         <label for="FirstName">First Name</label>
@@ -11,6 +11,7 @@
           type="name"
           class="form-control"
           id="FirstName"
+          name="FirstName"
           placeholder="Enter your First Name"
         />
       </div>
@@ -20,6 +21,7 @@
           type="name"
           class="form-control"
           id="MiddleName"
+          name="MiddleName"
           placeholder="Enter your Middle Name"
         />
       </div>
@@ -29,6 +31,7 @@
           type="name"
           class="form-control"
           id="LastName"
+          name="LastName"
           placeholder="Enter your Last Name"
         />
       </div>
@@ -39,6 +42,7 @@
         type="tel"
         class="form-control"
         id="ContactNum"
+        name="ContactNum"
         placeholder="Enter your Contact Number (123-456-7890)"
         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
       />
@@ -49,6 +53,7 @@
         type="address"
         class="form-control"
         id="Address"
+        name="Address"
         placeholder="Enter your Address"
       />
     </div>
@@ -58,23 +63,24 @@
         type="email"
         class="form-control"
         id="Email"
+        name="Email"
         aria-describedby="emailHelp"
         placeholder="Enter email"
       />
-      <small id="emailHelp" class="form-text text-muted"
-        >We'll never share your email with anyone else.</small
-      >
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <button type="submit" class="btn btn-primary" id="submit">Submit</button>
   </form>
   <pre id="result" class="mt-3"></pre>
+  <br>
+  {% if message %}<h5 class="text-center p-2" style='color: {{color}}'>{{message}}</h5>{% endif %}
 </div>
 
 
 
 
 <!-- Automatic Reformatting of Contact Number Field -->
- <script>
+<script>
   document.getElementById('ContactNum').addEventListener('input', function (event) {
     let input = event.target.value.replace(/\D/g, ''); // Remove all non-digit characters
     if (input.length > 3 && input.length <= 6) {
@@ -84,9 +90,9 @@
     }
     event.target.value = input;
   });
- </script>
+</script>
 
-<!-- Form Handling / JSON -->
+<!-- Form Handling -->
 <script>
   document.getElementById('registrationForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -95,26 +101,16 @@
 
   function submitForm() {
     const form = document.getElementById('registrationForm');
-    const data = {
-        fName: form.FirstName.value,
-        mName: form.MiddleName.value,
-        lName: form.LastName.value,
-        contactNum: form.ContactNum.value,
-        email: form.Email.value,
-        address: form.Address.value
-    };
-
+    const formData = new FormData(form);
+    
     fetch('/registration', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+      method: 'POST',
+      body: formData
     })
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
-}
+  }
 </script>
 
 {% endblock %}
