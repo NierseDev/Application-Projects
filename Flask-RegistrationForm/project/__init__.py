@@ -1,6 +1,21 @@
+# PACKAGES
 from flask import Flask, render_template, request, url_for, jsonify
 from flask_assets import Environment, Bundle
-import json
+import mysql.connector
+
+
+
+# Database
+def connectDB():
+    db = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        database='adet'
+    )
+
+    return db
+
+
 
 app = Flask(__name__)
 assets = Environment(app)
@@ -13,6 +28,7 @@ css = Bundle('src/sass/main.sass',
 
 assets.register("asset_css", css)
 css.build()
+
 
 # URL Routes:
 @app.route('/')
@@ -28,19 +44,30 @@ def registration():
     if request.method == 'GET':
         return render_template('registration.html')
     elif request.method == 'POST':
-        data = request.get_json()
-        fName = data.get('FirstName')
-        mName = data.get('MiddleName')
-        lName = data.get('LastName')
-        contactNum = data.get('ContactNum')
-        email = data.get('Email')
-        address = data.get('Address')
-        
-        # Load and Save to existing data
-        try:
-            with open('project/static/src/json/registrationData.json', 'w') as json_file:
-                json.dump(data, json_file)
-        except FileNotFoundError:
-            raise FileNotFoundError
+        fName = request.form.get('FirstName')
+        mName = request.form.get('MiddleName')
+        lName = request.form.get('LastName')
+        contactNum = request.form.get('ContactNum')
+        email = request.form.get('Email')
+        address = request.form.get('Address')
 
-        return jsonify({"message": "User registered successfully!"})
+        try:
+            conn = connectDB()
+            cursor = conn.cursor()
+
+            query = "INSERT INTO adet_user (FirstName, MiddleName, LastName, ContactNumber, Email, Address) VALUES (%s, %s, %s, %s, %s, %s)"
+            values = (fName, mName, lName, contactNum, email, address)
+
+            cursor.execute(query, values)
+            conn.commit()
+
+            message = "User registered successfully!"
+            color = '#70fa70'
+        except(Exception):
+            message = "Error: Failed to Register User!"
+            color = '#a81b1b'
+        finally:
+            cursor.close()
+            conn.close()
+        
+        return render_template('registration.html', message=message, color=color)
