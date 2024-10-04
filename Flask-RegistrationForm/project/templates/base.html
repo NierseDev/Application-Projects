@@ -28,6 +28,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url_for ('registration') }}">Registration</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for ('login') }}">Login</a>
+                </li>
               </ul>
             </div>
 
@@ -37,6 +40,7 @@
             </form>
         </nav>
 
+        <br>
         {% block body %}{% endblock %}
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
@@ -47,7 +51,7 @@
         crossorigin="anonymous"></script>
     </body>
 
-    <footer class="footer">
+    <footer class="footer mt-auto">
       <div>
         <p>By NierseDev</p>
       </div>
