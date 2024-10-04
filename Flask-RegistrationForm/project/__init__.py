@@ -1,21 +1,10 @@
 # PACKAGES
-from flask import Flask, render_template, request, url_for, jsonify
+from flask import Flask, render_template, request, url_for, jsonify, session, redirect
 from flask_assets import Environment, Bundle
 import mysql.connector
 import hashlib
 import time
-
-
-
-# Database
-def connectDB():
-    db = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        database='adet'
-    )
-
-    return db
+import secrets
 
 
 
@@ -31,6 +20,18 @@ css = Bundle('src/sass/main.sass',
 assets.register("asset_css", css)
 css.build()
 
+# Secret Key
+app.secret_key = secrets.token_urlsafe(16)
+
+# Database
+def connectDB():
+    db = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        database='adet'
+    )
+
+    return db
 
 # URL Routes:
 @app.route('/')
@@ -41,7 +42,7 @@ def index():
 def home():
     return render_template("index.html")
 
-@app.route('/login',methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
         return render_template('login.html')
@@ -50,40 +51,36 @@ def login():
         password = request.form.get('Password')
         password = hashlib.sha256(password.encode()).hexdigest()
 
-        try:
-            conn = connectDB()
-            cursor = conn.cursor()
-
-            query = "SELECT Email, Password FROM adet_user WHERE Email = %s AND Password = %s"
-            values = (email, password)
-
-            cursor.execute(query, values)
-            user = cursor.fetchone()
-
-            if user:
-                query = "SELECT Status FROM adet_user WHERE Email = %s AND Password = %s"
-                values = (email, password)
-
-                cursor.execute(query, values)
-                status = cursor.fetchone()[0]
-
-                if status in ['Banned', 'Deleted']:
-                    return render_template('userstatus.html')
-                else:
-                    message = "Login Successful"
-                    color = '#70fa70'
-                    time.sleep(1)
-                    return render_template('userdashboard.html')
+        db = connectDB()
+        cur = db.cursor()
+        cur.execute("SELECT UserID, Email, HASHEDPassword, Status FROM adet_user WHERE Email = %s AND HASHEDPassword = %s LIMIT 1", (email, password))
+        user = cur.fetchone()
+        
+        if user:
+            if user[3] in ['Banned', 'Deleted']:
+                message = "Account is Deleted or Banned"
             else:
-                raise Exception()
-        except(Exception):
+                message = "Login Successful!"
+                session['UserID'] = user[0]
+                session['Email'] = user[1]
+                time.sleep(1)
+                return redirect(url_for('dashboard'))
+        else:
             message = "Login Failed, Check Details!"
-            color = '#a81b1b'
-        finally:
-            cursor.close()
-            conn.close()
 
-        return render_template('login.html', message=message, color=color)
+        return render_template('login.html', message=message)
+
+@app.route('/dashboard')
+def dashboard():
+    # if 'UserID' not in session:
+    #     return redirect(url_for('login'))
+    
+    return render_template("dashboard.html")
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
 
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():
