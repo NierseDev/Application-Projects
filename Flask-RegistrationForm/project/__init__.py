@@ -2,6 +2,8 @@
 from flask import Flask, render_template, request, url_for, jsonify
 from flask_assets import Environment, Bundle
 import mysql.connector
+import hashlib
+import time
 
 
 
@@ -39,24 +41,69 @@ def index():
 def home():
     return render_template("index.html")
 
+@app.route('/login',methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    elif request.method == 'POST':
+        email = request.form.get('Email')
+        password = request.form.get('Password')
+        password = hashlib.sha256(password.encode()).hexdigest()
+
+        try:
+            conn = connectDB()
+            cursor = conn.cursor()
+
+            query = "SELECT Email, Password FROM adet_user WHERE Email = %s AND Password = %s"
+            values = (email, password)
+
+            cursor.execute(query, values)
+            user = cursor.fetchone()
+
+            if user:
+                query = "SELECT Status FROM adet_user WHERE Email = %s AND Password = %s"
+                values = (email, password)
+
+                cursor.execute(query, values)
+                status = cursor.fetchone()[0]
+
+                if status in ['Banned', 'Deleted']:
+                    return render_template('userstatus.html')
+                else:
+                    message = "Login Successful"
+                    color = '#70fa70'
+                    time.sleep(1)
+                    return render_template('userdashboard.html')
+            else:
+                raise Exception()
+        except(Exception):
+            message = "Login Failed, Check Details!"
+            color = '#a81b1b'
+        finally:
+            cursor.close()
+            conn.close()
+
+        return render_template('login.html', message=message, color=color)
+
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():
     if request.method == 'GET':
         return render_template('registration.html')
     elif request.method == 'POST':
+        email = request.form.get('Email')
+        password = request.form.get('Password')
+        password = hashlib.sha256(password.encode()).hexdigest()
         fName = request.form.get('FirstName')
-        mName = request.form.get('MiddleName')
         lName = request.form.get('LastName')
         contactNum = request.form.get('ContactNum')
-        email = request.form.get('Email')
         address = request.form.get('Address')
 
         try:
             conn = connectDB()
             cursor = conn.cursor()
 
-            query = "INSERT INTO adet_user (FirstName, MiddleName, LastName, ContactNumber, Email, Address) VALUES (%s, %s, %s, %s, %s, %s)"
-            values = (fName, mName, lName, contactNum, email, address)
+            query = "INSERT INTO adet_user (Email, HASHEDPassword, FirstName, LastName, ContactNum, Address) VALUES (%s, %s, %s, %s, %s, %s)"
+            values = (email, password, fName, lName, contactNum, address)
 
             cursor.execute(query, values)
             conn.commit()
