@@ -1,9 +1,14 @@
 # PACKAGES
 from flask import Flask, render_template, request, url_for, session, redirect
 from flask_assets import Environment, Bundle
+
+# Database
 import mysql.connector
+
+# Security
 import hashlib
 import secrets
+from functools import wraps
 
 app = Flask(__name__)
 assets = Environment(app)
