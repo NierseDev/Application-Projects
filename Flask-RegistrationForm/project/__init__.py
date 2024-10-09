@@ -1,12 +1,9 @@
 # PACKAGES
-from flask import Flask, render_template, request, url_for, jsonify, session, redirect
+from flask import Flask, render_template, request, url_for, session, redirect
 from flask_assets import Environment, Bundle
 import mysql.connector
 import hashlib
-import time
 import secrets
-
-
 
 app = Flask(__name__)
 assets = Environment(app)
@@ -51,37 +48,21 @@ def login():
         password = request.form.get('Password')
         password = hashlib.sha256(password.encode()).hexdigest()
 
-        db = connectDB()
-        cur = db.cursor()
-        cur.execute("SELECT UserID, Email, HASHEDPassword, Status FROM adet_user WHERE Email = %s AND HASHEDPassword = %s LIMIT 1", (email, password))
+        conn = connectDB()
+        cur = conn.cursor()
+        cur.execute("SELECT UserID, Email, HASHEDPassword, Status FROM adet_user WHERE Email = %s AND HASHEDPassword = %s", (email, password)) #LIMIT 1
         user = cur.fetchone()
         
         if user:
             if user[3] in ['Banned', 'Deleted']:
-                message = "Account is Deleted or Banned"
+                return render_template('login.html', message="Account is Deleted or Banned")
             else:
-                message = "Login Successful!"
                 session['UserID'] = user[0]
                 session['Email'] = user[1]
-                time.sleep(1)
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('dashboard')), 301
         else:
-            message = "Login Failed, Check Details!"
-
-        return render_template('login.html', message=message)
-
-@app.route('/dashboard')
-def dashboard():
-    # if 'UserID' not in session:
-    #     return redirect(url_for('login'))
-    
-    return render_template("dashboard.html")
-
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('home'))
-
+            return render_template('login.html', message="Login Failed, Check Details!")
+        
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():
     if request.method == 'GET':
@@ -115,3 +96,25 @@ def registration():
             conn.close()
         
         return render_template('registration.html', message=message, color=color)
+    
+@app.route('/dashboard')
+def dashboard():
+    if 'UserID' not in session:
+        return redirect(url_for('login'))
+    
+    if request.args.get('logout') == 'True':
+        session.clear()
+        return redirect(url_for('home'))
+    
+    conn = connectDB()
+    cur = conn.cursor()
+    cur.execute("SELECT Email, FirstName, LastName, ContactNum, Address FROM adet_user WHERE UserID = %s", (session['UserID'],))
+    user = cur.fetchone()
+    
+    return render_template("dashboard.html", Email=user[0], FirstName=user[1], LastName=user[2], ContactNum=user[3], Address=user[4])
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
+

@@ -2,12 +2,13 @@
 {% block title %}Web | Dashboard{% endblock %} 
 
 {% block body %}
-<div class="container"></div>
+<div class="container">
     <h1 class="text-center">User Dashboard</h1>
     <h2>Hello, {{ session['FirstName'] }}!</h2>
     <table class="table">
         <thead>
             <tr>
+                <th>Email</th>
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>ContactNum</th>
@@ -16,6 +17,7 @@
         </thead>
         <tbody>
             <tr>
+                <td>{{ session['Email'] }}</td>
                 <td>{{ session['FirstName'] }}</td>
                 <td>{{ session['LastName'] }}</td>
                 <td>{{ session['ContactNum'] }}</td>
