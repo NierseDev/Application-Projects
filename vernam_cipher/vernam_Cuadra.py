@@ -4,7 +4,7 @@ from decimal import Decimal
 
 def text_to_decimal(text: str) -> str:
     """Convert text to 3-digit decimal ASCII values with leading zeros"""
-    return #TODO
+    return "".join((str(ord(char)).zfill(3) for char in text))
 
 def decimal_to_text(decimal_str: str) -> str:
     """Convert 3-digit decimal string back to text"""
