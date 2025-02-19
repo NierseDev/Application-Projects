@@ -1,8 +1,16 @@
-_start:
-	mov edx,14
-	mov ecx,msg
-	mov ebx,1
-	mov eax,4
-	int 0x80
-	mov eax,1
-msg		db 'Hello, World!', 0xa
+section .data
+    hello db 'Hello, World!', 0
+
+section .text
+    global _main
+    extern _printf
+
+_main:
+    ; Print the string
+    push hello
+    call _printf
+    add esp, 4
+
+    ; Exit program
+    ret
+

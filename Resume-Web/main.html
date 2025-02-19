@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI Mono', monospace;
+            background-color: white;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .separation {
+            margin-bottom: 10px;
+        }
+        .collage {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: stretch;
+            min-height: calc(100vh - 150px);
+        }
+        .collage > div {
+            flex: 1 1 calc(50% - 6px);
+            margin: 5px;
+            min-height: 100px;
+            height: auto;
+        }
+        button {
+            background-color: transparent;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .center-heading {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-transparent py-4 px-4 flex justify-center separation">
+        <div class="rounded bg-white p-1 text-center" style="width: calc(30% - 2rem);">
+            <h1 class="text-black text-3xl">Welcome to my Resume</h1>
+        </div>
+    </nav>
+
+    <section id="content" class="container mx-auto px-4 collage">
+        <div class="bg-white rounded px-8 py-4">
+            <h2 class="text-2xl center-heading">Personal Information</h2>
+            <p>Name: Hamzah Ibarreta Cuadra</p>
+            <p>Job: Intern, Work From Home</p>
+            <p>From: Iriga City, Camarines Sur, Philippines</p>
+            <br>
+            <h4></h4>
+            <ul>
+                <p><i>Phone Number:</i></p>
+                <li>[+63] 950-154-5872</li>
+                <br>
+                <p><i>LinkedIn:</i></p>
+                <li><u><a href="https://www.linkedin.com/in/hamzah-cuadra-600316336/">linkedin/in/hamzah-cuadra</a></u></li>
+                <br>
+                <p><i>GitHub:</i></p>
+                <li><u><a href="https://github.com/NierseDev">github.com/NierseDev</a></u></li>
+            </ul>
+            <br>
+        </div>
+
+        <div class="bg-white rounded px-8 py-4" style="flex: 1 1 35%;">
+            <h2 class="text-2xl center-heading">Skills</h2>
+            <ul>
+                <li>- Software Development</li>
+                <li>- Game Development</li>
+                <li>- Cloud Computing</li>
+                <li>- UX/UI Design</li>
+            </ul>
+        </div>
+
+        <div class="bg-white rounded px-8 py-4" style="flex: 1 1 32%;">
+            <h2 class="text-2xl center-heading">Programming Languages</h2>
+            <ul>
+                <li>- C#</li>
+                <li>- Python</li>
+                <li>- Java</li>
+                <li>- HTML</li>
+                <li>- JavaScript</li>
+                <li>- CSS</li>
+            </ul>
+        </div>
+
+        <div class="bg-white rounded px-8 py-4" style="flex: 1 1 30%;">
+            <h2 class="text-2xl center-heading">Languages</h2>
+            <ul>
+                <li>- English</li>
+                <li>- Tagalog</li>
+            </ul>
+        </div>
+
+        <div class="bg-white rounded px-8 py-4" style="flex: 1 1 40%;">
+            <h2 class="text-2xl center-heading">Education</h2>
+            <div>
+                <p>[2006-2019]</p>
+                <p>General Education</p>
+                <p>Shorouq Al Mamlakah International School</p>
+                <p>GPA: 1.75</p>
+                <br>
+                <P>Extracurricular Activities:</P>
+                <ul>
+                    <li>- Games of the Generals Champion 2018</li>
+                </ul>
+                <hr><br><hr>
+                <p>[2019-2022]</p>
+                <p>High School Diploma</p>
+                <p>Nabua National High School</p>
+                <p>GPA: 1.95</p>
+                <hr><br><hr>
+                <p>[2022-Present]</p>
+                <p>Bachelor of Science in Computer Science</p>
+                <p>Camarines Sur Polytechnic Colleges</p>
+                <p>GPA: 1.35</p>
+                <br>
+                <p>Relevant Coursework:</p>
+                <ul>
+                    <li>- Application Development</li>
+                    <li>- Software Engineering</li>
+                    <li>- Defensive Programming</li>
+                    <li>- Information Assurance and Security</li>
+                </ul>
+                <br>
+            </div>
+        </div>
+
+        <div class="bg-white rounded px-8 py-4" style="flex: 1 1 40%;">
+            <h2 class="text-2xl center-heading">Experience</h2>
+            <div>
+                <p>[2023-Present]</p>
+                <p>Developer</p>
+                <p>Project SQ-Cuboner</p>
+                <p>Camarines Sur, Philippines</p>
+                <br>
+                <ul>
+                    <li>- Undisclosed Game Development Project</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded px-8 py-4" style="flex: 1 1 50%;">
+            <h2 class="text-2xl center-heading">Certificates</h2>
+            <div>
+                <p>2024</p>
+                <p>The Complete JavaScript Course 2024: From Zero to Expert!</p>
+                <p>Jonas Schmedtmann and Udemy</p>
+                <br>
+                <p>2025</p>
+                <p>Ultimate C# Masterclass for 2025</p>
+                <p>Krystyna Ślusarczyk and Udemy</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

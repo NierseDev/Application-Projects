@@ -1,0 +1,20 @@
+CSV contains:
+    date: The date of the weather record (YYYY-MM-DD format)
+    temperature: The temperature in degrees Celsius
+    humidity: The relative humidity as a percentage
+
+Tasks:
+1. Identify at least three areas where the code can be improved or refactored.
+2. Refactor the code to improve its quality, readability, and maintainability.
+3. Add error handling and input validation to make the code more robust.
+4. Implement type hinting for better code documentation.
+
+Criteria:
+1. Code quality and readability
+2. Proper implementation of defensive programming techniques
+3. Effective use of error handling and input validation
+4. Correct implementation of type hinting
+5. Implementation of bonus features
+    Implement additional features, such as calculating the median temperature or finding the day with the
+    highest humidity.
+6. Quality of explanations for the improvements made
