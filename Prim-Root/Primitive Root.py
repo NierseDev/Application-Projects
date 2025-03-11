@@ -1,3 +1,11 @@
+def is_prime(q):
+    if q <= 1:
+        return False
+    for i in range(2, int(q**0.5) + 1):
+        if q % i == 0:
+            return False
+    return True
+
 def is_primitive_root(g, q):
     """
     Check if g is a primitive root of q.
@@ -43,6 +51,9 @@ def check_primitive_root(q, g):
         q (int): The prime number.
         g (int): The number to check.
     """
+    if not is_prime(q):
+        print(f"{q} is not a prime number!!")
+        return
     print(f"{q}:")
     for i in range(1, q):
         results = []
@@ -60,6 +71,6 @@ def check_primitive_root(q, g):
     print(f"{g} is primitive root: {is_primitive_root(g, q)} [{', '.join(map(str, roots))}]")
 
 # Test the function
-q = 7
+q = 12
 g = 5
 check_primitive_root(q, g)
